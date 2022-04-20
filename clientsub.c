@@ -15,7 +15,7 @@ char buffer[LENGTH];
 memset(buffer, 0, LENGTH);
 
 zmq_recv (subscriber, buffer, LENGTH, 0);
-printf("%s otrzymalem \n",buffer);
+printf("Received [SUB]: %s  \n",buffer);
 zmq_close(subscriber);
 zmq_ctx_destroy(context);
 

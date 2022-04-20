@@ -11,7 +11,7 @@
 #define LENGTH 200
 #define SEND_LENGTH 100
 
-void *usluga_pull()
+void *pull_service()
 {
 
  int bytes,counter_pull=0;
@@ -31,7 +31,7 @@ zmq_ctx_destroy (context3);
 
 }
 
-void *usluga_rep(){
+void *rep_service(){
 void *context1 = zmq_ctx_new();
 void *responder = zmq_socket (context1, ZMQ_REP);
 char buffer[LENGTH];
@@ -54,9 +54,8 @@ zmq_close(responder);
 zmq_ctx_destroy(context1);
 }
 
-void *usluga_pub()
+void *pub_service()
 {
-printf("wystartowalem \n");
 void *context2 = zmq_ctx_new();
 void *publisher = zmq_socket (context2, ZMQ_PUB);
 char buffer_send_pub[SEND_LENGTH];
@@ -64,7 +63,7 @@ int counter_pub = 0;
 int rc = zmq_bind(publisher, "tcp://*:5550");
 assert (rc == 0);
 while(1){
-	strcpy(buffer_send_pub,"siema");
+	strcpy(buffer_send_pub,"This is pub service");
 	zmq_send (publisher, buffer_send_pub, SEND_LENGTH, 0);
 	printf("%d. - published. \n",counter_pub);
 	sleep(1);
@@ -77,9 +76,9 @@ zmq_ctx_destroy(context2);
 
 int main(int argc, char argv[]){
 pthread_t t1, t2 ,t3;
-pthread_create( &t1, NULL, usluga_rep, NULL);
-pthread_create( &t2, NULL, usluga_pull, NULL);
-pthread_create( &t3, NULL, usluga_pub, NULL);
+pthread_create( &t1, NULL, rep_service, NULL);
+pthread_create( &t2, NULL, pull_service, NULL);
+pthread_create( &t3, NULL, pub_service, NULL);
 pthread_join(t3, NULL);
 pthread_join(t2, NULL);
 pthread_join(t1, NULL);

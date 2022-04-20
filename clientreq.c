@@ -14,7 +14,7 @@ char buffer_send[SEND_LENGTH];
 memset(buffer, 0, LENGTH);
 memset(buffer_send, 0, SEND_LENGTH);
 
-strcpy(buffer_send, "Czesc tu jonasz");
+strcpy(buffer_send, "REQ method here");
 zmq_connect (requester, "tcp://localhost:5554");
 
 zmq_send (requester, buffer_send, SEND_LENGTH, 0);
