@@ -1,4 +1,8 @@
- * Compilation for server:  
+#ZMQ Sockets -
+push-pull
+pub - sub
+rep - req
+* Compilation for server:  
  * gcc -Wall ./server.c -o ./server -lzmq -lpthread 
  * Compilation for clients: 
  * gcc -Wall ./clientreq.c -o ./clientreq -lzmq
