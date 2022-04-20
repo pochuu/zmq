@@ -1,9 +1,9 @@
 #### ZMQ Sockets -
-** push-pull
+* push-pull
 * pub - sub
 * rep - req
 
- * How to run:
+#### How to run:
  * Compilation for server:  
  * gcc -Wall ./server.c -o ./server -lzmq -lpthread 
  * Compilation for clients: 
