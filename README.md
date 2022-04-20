@@ -1,7 +1,7 @@
 #### ZMQ Sockets -
-push-pull
-pub - sub
-rep - req
+*push-pull
+*pub - sub
+*rep - req
 
   * How to run:
  * Compilation for server:  
